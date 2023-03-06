@@ -1,0 +1,14 @@
+qemu-system-aarch64 \
+    -machine virt \
+    --accel tcg,thread=multi \
+    -cpu cortex-a57 \
+    -smp 2 \
+    -m 2g \
+    -nographic \
+    -drive if=pflash,file=/usr/share/AAVMF/AAVMF_CODE.fd,format=raw,readonly \
+    -drive if=pflash,file=/usr/share/AAVMF/AAVMF_VARS.fd,format=raw \
+    -drive if=virtio,file=./netbsd-aarch64-uefi.img,cache=unsafe,discard=unmap,id=hd0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -device virtio-net-pci,netdev=net0 \
+    -device virtio-rng-pci,rng=rng0 \
+    -object rng-random,filename=/dev/urandom,id=rng0
