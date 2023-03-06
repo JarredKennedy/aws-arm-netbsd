@@ -13,6 +13,13 @@ losetup -f ./netbsd-aarch-uefi.img
 partprobe /dev/loop0
 ```
 5. Format EFI partition Fat 32, mount partition and copy bootloader
+```
+mkfs.fat -F32 /dev/loop0p1
+mkdir -p /mnt/netbsd-efi
+mount /dev/loop0p1 /mnt/netbsd-efi
+mkdir -p /mnt/netbsd-efi/EFI/BOOT
+cp $RELEASEDIR/evbarm/installation/misc/bootaa64.efi /mnt/netbsd-efi/EFI/BOOT/bootaa64.efi
+```
 6. Create directory for NetBSD fs root, copy kernel as /netbsd and extract and copy required sets
 ```
 mkdir netbsd-boot
