@@ -7,9 +7,11 @@ Commands to crosss compile NetBSD for aarch64 target and create minimal OS image
 3. Use toolchain to compile application
 4. Make GPT disk image with EFI and boot partitions
 ```
-dd if=/dev/zero of=./netbsd-aarch-uefi.img bs=1g count=3
+dd if=/dev/zero of=./netbsd-aarch-uefi.img bs=1G count=3
 losetup -f ./netbsd-aarch-uefi.img
-# ... gpt instructions here
+$TOOLDIR/bin/nbgpt /dev/loop0 create -A
+$TOOLDIR/bin/nbgpt /dev/loop0 add -l EFI -s 200m -t efi
+$TOOLDIR/bin/nbgpt /dev/loop0 add -l BOOT -t ffs
 partprobe /dev/loop0
 ```
 5. Format EFI partition Fat 32, mount partition and copy bootloader
