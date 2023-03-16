@@ -7,7 +7,7 @@ qemu-system-aarch64 \
     -nographic \
     -drive if=pflash,file=/usr/share/AAVMF/AAVMF_CODE.fd,format=raw,readonly \
     -drive if=pflash,file=/usr/share/AAVMF/AAVMF_VARS.fd,format=raw \
-    -drive if=virtio,file=./netbsd-aarch64-uefi.img,cache=unsafe,discard=unmap,id=hd0 \
+    -drive if=virtio,file=./netbsd-aarch-uefi.img,cache=unsafe,discard=unmap,id=hd0 \
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -device virtio-net-pci,netdev=net0 \
     -device virtio-rng-pci,rng=rng0 \
