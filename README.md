@@ -47,6 +47,7 @@ EOF
 vi etc/rc.conf
 rc_configured=YES
 dhcpcd=YES
+postfix=NO
 ```
 6. Make NetBSD fs image using nbmakefs from toolchain and write it to disk image boot partition
 ```
