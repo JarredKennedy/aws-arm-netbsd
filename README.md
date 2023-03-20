@@ -25,7 +25,8 @@ cd usr/src
 ./build.sh -U -O ../../obj -j$(nproc) -m evbarm -a aarch64 tools
 ./build.sh -U -u -O ../../obj -j$(nproc) -m evbarm -a aarch64 release
 ```
-3. Use toolchain to compile application
+3. Use toolchain to compile application  
+[See here](program.md)
 4. Create directory for NetBSD fs root, copy kernel as /netbsd and extract and copy required sets
 ```
 cd ../../
@@ -42,6 +43,10 @@ rm *.tgz
 cat <<EOF > etc/fstab
 NAME=BOOT   /   ffs rw,log  1 1
 EOF
+
+vi etc/rc.conf
+rc_configured=YES
+dhcpcd=YES
 ```
 6. Make NetBSD fs image using nbmakefs from toolchain and write it to disk image boot partition
 ```
