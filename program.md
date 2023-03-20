@@ -16,4 +16,4 @@ ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, in
 ```
 - Binaries included on NetBSD are somehow "for NetBSD" and the binary compiled with aarch64--netbsd-gcc is not.
 - Running objdump on the compiled program and NetBSD binaries shows the NetBSD binaries include sections `.note.netbsd.ident` and `.note.netbsd.pax` and the compiled program does not.
-- Running objdump on usr/lib/sysident.o shows it includes these sections. Linking against sysident.o might make make the program executable on NetBSD.
+- Running objdump on usr/lib/sysident.o shows it includes these sections. Linking against sysident.o makes the program executable on the NetBSD instance.
